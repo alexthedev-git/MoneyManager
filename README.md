@@ -1,800 +1,184 @@
-Contribution: 2019-10-10 20:00
+# Money Manager
 
-Contribution: 2019-10-10 20:01
+Money Manager is a desktop application for managing your personal finances and accounts.
 
-Contribution: 2019-10-10 20:02
+It uses [Electron](https://electron.atom.io/) as the application platform and [Vue.js](https://vuejs.org/) as the Front-End UI framework.
 
-Contribution: 2019-10-11 20:00
+💲🤑 Be in control of your finances with Money Manager! 🏧👛
 
-Contribution: 2019-10-11 20:01
+## Installation
 
-Contribution: 2019-10-12 20:00
+Download the latest release [here](https://github.com/dhulme/money-manager/releases) and run the setup program.
 
-Contribution: 2019-10-12 20:01
+## Features
 
-Contribution: 2019-10-12 20:02
+💳 Keep track of transactions to and from your bank accounts and credit cards  
+💰 Assign money from your accounts to different budgets  
+💹 Get insights and analyse your spending and balances over time  
+📅 Create bulk transactions that happen regularly, like paying bills or being paid your salary  
+📤 Export your accounts and transactions as CSV  
+🖊️ Highlight important transactions  
+🕒 Monthly backups made of your data  
+🏦 Import transactions from your bank statements (several common formats supported)  
+🌍 Change the currency and date format to match your region  
+💾 All your data is stored locally and never sent over the internet  
 
-Contribution: 2019-10-12 20:03
+## Getting Started
 
-Contribution: 2019-10-13 20:00
+*Accounts* are labelled pots of money. An account can be an asset or a budget. Assets represent real world accounts, like a bank account, credit card, or gift card. Budgets are virtual pots to help manage your real world accounts, like a budget for food or money you are owed by friends. Budgets help you keep track of your money, so rather than looking at your bank account and having no idea what money is for food, health, entertainment or savings, you're able to allocate this money to different budgets.
 
-Contribution: 2019-10-14 20:00
+The process is loosely based on [double-entry bookkeeping](https://en.wikipedia.org/wiki/Double-entry_bookkeeping_system). When money in an asset (real-world account) goes in or out, you must assign that change to a budget. You do this by adding a *transaction*. Transactions can be between an asset and a budget, or between assets, or between budgets. For example, you go to a supermarket and buy some bananas with your credit card. You would add a transaction going out of your credit card account, and put the destination account as your food budget.
 
-Contribution: 2019-10-14 20:01
+In a normal double-entry bookkeeping system, you would need to enter one entry on your credit card account and another on your food budget. Money Manager makes this process easier, you only need to enter the transaction one way, and it will create the opposite transaction on the other account. If you want to do complex transactions, you can use the special 'None' account, which allows you enter the opposite transaction manually. Any time you do this, a warning will appear within Money Manager that your assets and budgets do not match.
 
-Contribution: 2019-10-14 20:02
+For transactions that happen regularly, such as assigning money from a salary to other budgets, you can use *Bulk Transactions*. Once you've been using Money Manager for some time, you'll be able to visualise your transaction data on the the Insights page. This can be useful in helping you decide on any changes to your budgeting. For example, you might not notice there is always money left in your food account at the end of each month, so you could adjust your bulk transaction to transfer less money from your salary to food account.
 
-Contribution: 2019-10-14 20:03
+## Screenshots
 
-Contribution: 2019-10-14 20:04
+### Accounts
 
-Contribution: 2019-10-14 20:05
+![Accounts](./docs/screenshots/accounts.png)
 
-Contribution: 2019-10-14 20:06
+### Adding a Transaction
 
-Contribution: 2019-10-15 20:00
+![Account](./docs/screenshots/account.png)
 
-Contribution: 2019-10-18 20:00
+## Insights
 
-Contribution: 2019-10-18 20:01
+![Insights](./docs/screenshots/insights.png)
 
-Contribution: 2019-10-18 20:02
+## Development Setup
 
-Contribution: 2019-10-18 20:03
+Uses [Electron Vue](https://github.com/SimulatedGREG/electron-vue) to integrate Vue with Electron and handle build process.
 
-Contribution: 2019-10-18 20:04
+```bash
+# install dependencies
+npm install
 
-Contribution: 2019-10-18 20:05
+# dev server with hot reload at localhost:8080
+npm run dev
 
-Contribution: 2019-10-19 20:00
+# build packaged distribution with electron builder
+npm run build
 
-Contribution: 2019-10-19 20:01
+# build unpackaged distribution with electron builder
+npm run build:dir
+```
 
-Contribution: 2019-10-19 20:02
+## Licence
 
-Contribution: 2019-10-19 20:03
+MIT
 
-Contribution: 2019-10-19 20:04
+## Data Structure
 
-Contribution: 2019-10-21 20:00
+Each 'project' in Money Manager is stored in a single JSON file. Local backups of your project file are made automatically each month. The most recent project file will open automatically when you start Money Manager.
 
-Contribution: 2019-10-21 20:01
+### Account Category
 
-Contribution: 2019-10-21 20:02
+```javascript
+{
+  id: String, // human readable
+  name: String,
+  type: String // one of 'asset', 'budget'
+}
+```
 
-Contribution: 2019-10-21 20:03
+### Account
 
-Contribution: 2019-10-21 20:04
+```javascript
+{
+  balance: String,
+  category: String, // account category ID
+  id: String, // human readable
+  name: String,
+  transactionIds: [String...],
+  type: String // one of 'asset', 'budget' or 'none',
+  deleted: Boolean,
+  importTransactionsFormatId: String
+}
+```
 
-Contribution: 2019-10-21 20:05
-
-Contribution: 2019-10-22 20:00
-
-Contribution: 2019-10-22 20:01
-
-Contribution: 2019-10-22 20:02
-
-Contribution: 2019-10-23 20:00
-
-Contribution: 2019-10-23 20:01
-
-Contribution: 2019-10-23 20:02
-
-Contribution: 2019-10-23 20:03
-
-Contribution: 2019-10-23 20:04
-
-Contribution: 2019-10-23 20:05
-
-Contribution: 2019-10-23 20:06
-
-Contribution: 2019-10-25 20:00
-
-Contribution: 2019-10-25 20:01
-
-Contribution: 2019-10-25 20:02
-
-Contribution: 2019-10-25 20:03
-
-Contribution: 2019-10-25 20:04
-
-Contribution: 2019-10-25 20:05
-
-Contribution: 2019-10-25 20:06
-
-Contribution: 2019-10-26 20:00
-
-Contribution: 2019-10-26 20:01
-
-Contribution: 2019-10-26 20:02
-
-Contribution: 2019-10-26 20:03
-
-Contribution: 2019-10-26 20:04
-
-Contribution: 2019-10-26 20:05
-
-Contribution: 2019-10-26 20:06
-
-Contribution: 2019-10-27 20:00
-
-Contribution: 2019-10-27 20:01
-
-Contribution: 2019-10-27 20:02
-
-Contribution: 2019-10-28 20:00
-
-Contribution: 2019-10-28 20:01
-
-Contribution: 2019-10-29 20:00
-
-Contribution: 2019-10-29 20:01
-
-Contribution: 2019-10-29 20:02
-
-Contribution: 2019-10-30 20:00
-
-Contribution: 2019-10-30 20:01
-
-Contribution: 2019-10-30 20:02
-
-Contribution: 2019-10-30 20:03
-
-Contribution: 2019-10-30 20:04
-
-Contribution: 2019-10-30 20:05
-
-Contribution: 2019-10-31 20:00
-
-Contribution: 2019-10-31 20:01
-
-Contribution: 2019-10-31 20:02
-
-Contribution: 2019-10-31 20:03
-
-Contribution: 2019-11-01 20:00
-
-Contribution: 2019-11-01 20:01
-
-Contribution: 2019-11-01 20:02
-
-Contribution: 2019-11-01 20:03
-
-Contribution: 2019-11-01 20:04
-
-Contribution: 2019-11-02 20:00
-
-Contribution: 2019-11-02 20:01
-
-Contribution: 2019-11-02 20:02
-
-Contribution: 2019-11-06 20:00
-
-Contribution: 2019-11-06 20:01
-
-Contribution: 2019-11-06 20:02
-
-Contribution: 2019-11-06 20:03
-
-Contribution: 2019-11-07 20:00
-
-Contribution: 2019-11-07 20:01
-
-Contribution: 2019-11-07 20:02
-
-Contribution: 2019-11-07 20:03
-
-Contribution: 2019-11-07 20:04
-
-Contribution: 2019-11-07 20:05
-
-Contribution: 2019-11-07 20:06
-
-Contribution: 2019-11-08 20:00
-
-Contribution: 2019-11-09 20:00
-
-Contribution: 2019-11-09 20:01
-
-Contribution: 2019-11-09 20:02
-
-Contribution: 2019-11-09 20:03
-
-Contribution: 2019-11-09 20:04
-
-Contribution: 2019-11-09 20:05
-
-Contribution: 2019-11-10 20:00
-
-Contribution: 2019-11-10 20:01
-
-Contribution: 2019-11-10 20:02
-
-Contribution: 2019-11-11 20:00
-
-Contribution: 2019-11-11 20:01
-
-Contribution: 2019-11-11 20:02
-
-Contribution: 2019-11-11 20:03
-
-Contribution: 2019-11-11 20:04
-
-Contribution: 2019-11-14 20:00
-
-Contribution: 2019-11-14 20:01
-
-Contribution: 2019-11-15 20:00
-
-Contribution: 2019-11-15 20:01
-
-Contribution: 2019-11-15 20:02
-
-Contribution: 2019-11-15 20:03
-
-Contribution: 2019-11-15 20:04
-
-Contribution: 2019-11-16 20:00
-
-Contribution: 2019-11-16 20:01
-
-Contribution: 2019-11-16 20:02
-
-Contribution: 2019-11-16 20:03
-
-Contribution: 2019-11-16 20:04
-
-Contribution: 2019-11-17 20:00
-
-Contribution: 2019-11-17 20:01
-
-Contribution: 2019-11-17 20:02
-
-Contribution: 2019-11-17 20:03
-
-Contribution: 2019-11-17 20:04
-
-Contribution: 2019-11-18 20:00
-
-Contribution: 2019-11-19 20:00
-
-Contribution: 2019-11-19 20:01
-
-Contribution: 2019-11-20 20:00
-
-Contribution: 2019-11-21 20:00
-
-Contribution: 2019-11-22 20:00
-
-Contribution: 2019-11-22 20:01
-
-Contribution: 2019-11-22 20:02
-
-Contribution: 2019-11-22 20:03
-
-Contribution: 2019-11-22 20:04
-
-Contribution: 2019-11-22 20:05
-
-Contribution: 2019-11-22 20:06
-
-Contribution: 2019-11-24 20:00
-
-Contribution: 2019-11-25 20:00
-
-Contribution: 2019-11-26 20:00
-
-Contribution: 2019-11-26 20:01
-
-Contribution: 2019-11-26 20:02
-
-Contribution: 2019-11-26 20:03
-
-Contribution: 2019-11-26 20:04
-
-Contribution: 2019-11-26 20:05
-
-Contribution: 2019-11-26 20:06
-
-Contribution: 2019-11-29 20:00
-
-Contribution: 2019-11-29 20:01
-
-Contribution: 2019-11-29 20:02
-
-Contribution: 2019-12-01 20:00
-
-Contribution: 2019-12-01 20:01
-
-Contribution: 2019-12-01 20:02
-
-Contribution: 2019-12-01 20:03
-
-Contribution: 2019-12-01 20:04
-
-Contribution: 2019-12-01 20:05
-
-Contribution: 2019-12-02 20:00
-
-Contribution: 2019-12-02 20:01
-
-Contribution: 2019-12-02 20:02
-
-Contribution: 2019-12-03 20:00
-
-Contribution: 2019-12-03 20:01
-
-Contribution: 2019-12-03 20:02
-
-Contribution: 2019-12-03 20:03
-
-Contribution: 2019-12-03 20:04
-
-Contribution: 2019-12-03 20:05
-
-Contribution: 2019-12-03 20:06
-
-Contribution: 2019-12-05 20:00
-
-Contribution: 2019-12-05 20:01
-
-Contribution: 2019-12-05 20:02
-
-Contribution: 2019-12-05 20:03
-
-Contribution: 2019-12-05 20:04
-
-Contribution: 2019-12-07 20:00
-
-Contribution: 2019-12-07 20:01
-
-Contribution: 2019-12-07 20:02
-
-Contribution: 2019-12-07 20:03
-
-Contribution: 2019-12-07 20:04
-
-Contribution: 2019-12-08 20:00
-
-Contribution: 2019-12-09 20:00
-
-Contribution: 2019-12-10 20:00
-
-Contribution: 2019-12-10 20:01
-
-Contribution: 2019-12-10 20:02
-
-Contribution: 2019-12-10 20:03
-
-Contribution: 2019-12-10 20:04
-
-Contribution: 2019-12-10 20:05
-
-Contribution: 2019-12-11 20:00
-
-Contribution: 2019-12-11 20:01
-
-Contribution: 2019-12-11 20:02
-
-Contribution: 2019-12-11 20:03
-
-Contribution: 2019-12-11 20:04
-
-Contribution: 2019-12-11 20:05
-
-Contribution: 2019-12-11 20:06
-
-Contribution: 2019-12-15 20:00
-
-Contribution: 2019-12-15 20:01
-
-Contribution: 2019-12-15 20:02
-
-Contribution: 2019-12-15 20:03
-
-Contribution: 2019-12-16 20:00
-
-Contribution: 2019-12-16 20:01
-
-Contribution: 2019-12-16 20:02
-
-Contribution: 2019-12-16 20:03
-
-Contribution: 2019-12-16 20:04
-
-Contribution: 2019-12-16 20:05
-
-Contribution: 2019-12-17 20:00
-
-Contribution: 2019-12-17 20:01
-
-Contribution: 2019-12-17 20:02
-
-Contribution: 2019-12-17 20:03
-
-Contribution: 2019-12-17 20:04
-
-Contribution: 2019-12-17 20:05
-
-Contribution: 2019-12-17 20:06
-
-Contribution: 2019-12-18 20:00
-
-Contribution: 2019-12-18 20:01
-
-Contribution: 2019-12-19 20:00
-
-Contribution: 2019-12-20 20:00
-
-Contribution: 2019-12-20 20:01
-
-Contribution: 2019-12-21 20:00
-
-Contribution: 2019-12-21 20:01
-
-Contribution: 2019-12-21 20:02
-
-Contribution: 2019-12-21 20:03
-
-Contribution: 2019-12-21 20:04
-
-Contribution: 2019-12-23 20:00
-
-Contribution: 2019-12-23 20:01
-
-Contribution: 2019-12-24 20:00
-
-Contribution: 2019-12-24 20:01
-
-Contribution: 2019-12-24 20:02
-
-Contribution: 2019-12-24 20:03
-
-Contribution: 2019-12-24 20:04
-
-Contribution: 2019-12-27 20:00
-
-Contribution: 2019-12-27 20:01
-
-Contribution: 2019-12-27 20:02
-
-Contribution: 2019-12-27 20:03
-
-Contribution: 2019-12-27 20:04
-
-Contribution: 2019-12-27 20:05
-
-Contribution: 2019-12-28 20:00
-
-Contribution: 2019-12-29 20:00
-
-Contribution: 2019-12-29 20:01
-
-Contribution: 2019-12-29 20:02
-
-Contribution: 2019-12-29 20:03
-
-Contribution: 2019-12-31 20:00
-
-Contribution: 2019-12-31 20:01
-
-Contribution: 2019-12-31 20:02
-
-Contribution: 2020-01-02 20:00
-
-Contribution: 2020-01-02 20:01
-
-Contribution: 2020-01-02 20:02
-
-Contribution: 2020-01-02 20:03
-
-Contribution: 2020-01-03 20:00
-
-Contribution: 2020-01-03 20:01
-
-Contribution: 2020-01-03 20:02
-
-Contribution: 2020-01-03 20:03
-
-Contribution: 2020-01-03 20:04
-
-Contribution: 2020-01-03 20:05
-
-Contribution: 2020-01-08 20:00
-
-Contribution: 2020-01-13 20:00
-
-Contribution: 2020-01-13 20:01
-
-Contribution: 2020-01-13 20:02
-
-Contribution: 2020-01-13 20:03
-
-Contribution: 2020-01-13 20:04
-
-Contribution: 2020-01-14 20:00
-
-Contribution: 2020-01-14 20:01
-
-Contribution: 2020-01-14 20:02
-
-Contribution: 2020-01-14 20:03
-
-Contribution: 2020-01-14 20:04
-
-Contribution: 2020-01-16 20:00
-
-Contribution: 2020-01-17 20:00
-
-Contribution: 2020-01-17 20:01
-
-Contribution: 2020-01-17 20:02
-
-Contribution: 2020-01-17 20:03
-
-Contribution: 2020-01-17 20:04
-
-Contribution: 2020-01-17 20:05
-
-Contribution: 2020-01-17 20:06
-
-Contribution: 2020-01-18 20:00
-
-Contribution: 2020-01-18 20:01
-
-Contribution: 2020-01-18 20:02
-
-Contribution: 2020-01-19 20:00
-
-Contribution: 2020-01-19 20:01
-
-Contribution: 2020-01-19 20:02
-
-Contribution: 2020-01-19 20:03
-
-Contribution: 2020-01-19 20:04
-
-Contribution: 2020-01-19 20:05
-
-Contribution: 2020-01-20 20:00
-
-Contribution: 2020-01-20 20:01
-
-Contribution: 2020-01-20 20:02
-
-Contribution: 2020-01-20 20:03
-
-Contribution: 2020-01-20 20:04
-
-Contribution: 2020-01-21 20:00
-
-Contribution: 2020-01-23 20:00
-
-Contribution: 2020-01-23 20:01
-
-Contribution: 2020-01-23 20:02
-
-Contribution: 2020-01-24 20:00
-
-Contribution: 2020-01-24 20:01
-
-Contribution: 2020-01-24 20:02
-
-Contribution: 2020-01-25 20:00
-
-Contribution: 2020-01-25 20:01
-
-Contribution: 2020-01-26 20:00
-
-Contribution: 2020-01-26 20:01
-
-Contribution: 2020-01-26 20:02
-
-Contribution: 2020-01-27 20:00
-
-Contribution: 2020-01-29 20:00
-
-Contribution: 2020-01-29 20:01
-
-Contribution: 2020-01-29 20:02
-
-Contribution: 2020-01-29 20:03
-
-Contribution: 2020-01-29 20:04
-
-Contribution: 2020-01-29 20:05
-
-Contribution: 2020-01-30 20:00
-
-Contribution: 2020-01-30 20:01
-
-Contribution: 2020-01-30 20:02
-
-Contribution: 2020-02-01 20:00
-
-Contribution: 2020-02-01 20:01
-
-Contribution: 2020-02-01 20:02
-
-Contribution: 2020-02-01 20:03
-
-Contribution: 2020-02-02 20:00
-
-Contribution: 2020-02-02 20:01
-
-Contribution: 2020-02-03 20:00
-
-Contribution: 2020-02-03 20:01
-
-Contribution: 2020-02-03 20:02
-
-Contribution: 2020-02-03 20:03
-
-Contribution: 2020-02-03 20:04
-
-Contribution: 2020-02-05 20:00
-
-Contribution: 2020-02-05 20:01
-
-Contribution: 2020-02-05 20:02
-
-Contribution: 2020-02-06 20:00
-
-Contribution: 2020-02-06 20:01
-
-Contribution: 2020-02-06 20:02
-
-Contribution: 2020-02-06 20:03
-
-Contribution: 2020-02-06 20:04
-
-Contribution: 2020-02-07 20:00
-
-Contribution: 2020-02-07 20:01
-
-Contribution: 2020-02-07 20:02
-
-Contribution: 2020-02-07 20:03
-
-Contribution: 2020-02-08 20:00
-
-Contribution: 2020-02-08 20:01
-
-Contribution: 2020-02-09 20:00
-
-Contribution: 2020-02-09 20:01
-
-Contribution: 2020-02-09 20:02
-
-Contribution: 2020-02-10 20:00
-
-Contribution: 2020-02-10 20:01
-
-Contribution: 2020-02-10 20:02
-
-Contribution: 2020-02-10 20:03
-
-Contribution: 2020-02-13 20:00
-
-Contribution: 2020-02-13 20:01
-
-Contribution: 2020-02-13 20:02
-
-Contribution: 2020-02-14 20:00
-
-Contribution: 2020-02-15 20:00
-
-Contribution: 2020-02-15 20:01
-
-Contribution: 2020-02-15 20:02
-
-Contribution: 2020-02-15 20:03
-
-Contribution: 2020-02-15 20:04
-
-Contribution: 2020-02-15 20:05
-
-Contribution: 2020-02-18 20:00
-
-Contribution: 2020-02-18 20:01
-
-Contribution: 2020-02-18 20:02
-
-Contribution: 2020-02-19 20:00
-
-Contribution: 2020-02-19 20:01
-
-Contribution: 2020-02-19 20:02
-
-Contribution: 2020-02-19 20:03
-
-Contribution: 2020-02-20 20:00
-
-Contribution: 2020-02-21 20:00
-
-Contribution: 2020-02-21 20:01
-
-Contribution: 2020-02-22 20:00
-
-Contribution: 2020-02-22 20:01
-
-Contribution: 2020-02-22 20:02
-
-Contribution: 2020-02-22 20:03
-
-Contribution: 2020-02-23 20:00
-
-Contribution: 2020-02-23 20:01
-
-Contribution: 2020-02-24 20:00
-
-Contribution: 2020-02-26 20:00
-
-Contribution: 2020-02-26 20:01
-
-Contribution: 2020-02-26 20:02
-
-Contribution: 2020-02-26 20:03
-
-Contribution: 2020-02-26 20:04
-
-Contribution: 2020-02-26 20:05
-
-Contribution: 2020-02-26 20:06
-
-Contribution: 2020-02-27 20:00
-
-Contribution: 2020-02-27 20:01
-
-Contribution: 2020-02-27 20:02
-
-Contribution: 2020-02-27 20:03
-
-Contribution: 2020-02-29 20:00
-
-Contribution: 2020-02-29 20:01
-
-Contribution: 2020-02-29 20:02
-
-Contribution: 2020-02-29 20:03
-
-Contribution: 2020-02-29 20:04
-
-Contribution: 2020-03-01 20:00
-
-Contribution: 2020-03-01 20:01
-
-Contribution: 2020-03-01 20:02
-
-Contribution: 2020-03-01 20:03
-
-Contribution: 2020-03-01 20:04
-
-Contribution: 2020-03-02 20:00
-
-Contribution: 2020-03-02 20:01
-
-Contribution: 2020-03-02 20:02
-
-Contribution: 2020-03-02 20:03
-
-Contribution: 2020-03-02 20:04
-
-Contribution: 2020-03-02 20:05
-
-Contribution: 2020-03-04 20:00
-
-Contribution: 2020-03-04 20:01
-
-Contribution: 2020-03-05 20:00
-
-Contribution: 2020-03-05 20:01
-
-Contribution: 2020-03-05 20:02
-
-Contribution: 2020-03-05 20:03
-
-Contribution: 2020-03-05 20:04
-
-Contribution: 2020-03-05 20:05
-
+### Transaction
+
+```javascript
+{
+  date: String,
+  description: String,
+  expense: String, // account ID for nicer visual display of dual transactions
+  from: String, // account ID
+  to: String, // account ID
+  note: String,
+  value: String,
+  highlighted: Boolean,
+  linkedTransaction?: String // for dual transactions, so they can be edited as one
+}
+```
+
+### Summary
+
+```javascript
+{
+  balance: String
+}
+```
+
+### Bulk Transaction
+
+```javascript
+{
+  description: String,
+  id: String, // human readable
+  name: String,
+  transactionIds: [String...],
+  lastModified: Date
+}
+```
+
+### Bulk Transaction Transaction
+
+```javascript
+{
+  from: String, // account ID
+  to: String, // account ID
+  note: String,
+  value: String
+}
+```
+
+## Settings
+
+Money Manager settings are stored in a JSON file your Windows user profile folder.
+
+```javascript
+{
+  projectPath: String,
+  lastBackupDates: Object, // one key per project
+  currencyPrefix: String,
+  dateFormat: String
+}
+```
+
+## Import Formats
+
+### Money Manager Bulk Transactions
+
+Custom TSV (tab separated values) format used for importing bulk transactions.
+
+Example:
+```
+From	To	Note	Amount
+Salary	Mortgage		 £1.00
+Salary	Food		 £1.00
+```
+
+### Midata
+
+A UK standard for financial data.
+
+### Capital One
+
+Used by Capital One UK.
+
+### Santander
+
+Used by Satander UK.
